@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://pymvkf71n5g3"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_jp1hu"]
+
+[sub_resource type="Theme" id="Theme_0cu54"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0cu54")
+script = ExtResource("1_jp1hu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 65.0
+offset_right = 6.0
+offset_bottom = 202.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.564706, 0.219608, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "jueguico"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empezar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 320.0
+offset_right = 710.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(0.305882, 0.396078, 0.145098, 1)
+theme_override_colors/font_hover_color = Color(0.202948, 0.267656, 0.0873242, 1)
+text = "Jugar/Nueva Partida"
+
+[node name="Opciones" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 420.0
+offset_right = 710.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(0.305882, 0.396078, 0.145098, 1)
+text = "Opciones"
+
+[node name="Salir2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 520.0
+offset_right = 710.0
+offset_bottom = 590.0
+theme_override_colors/font_color = Color(0.305882, 0.396078, 0.145098, 1)
+theme_override_colors/font_hover_color = Color(0.202948, 0.267656, 0.0873242, 1)
+text = "Salir"
+
+[connection signal="pressed" from="Empezar" to="." method="_on_empezar_pressed"]
+[connection signal="pressed" from="Salir2" to="." method="_on_salir_2_pressed"]
