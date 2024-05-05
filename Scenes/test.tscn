@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://dcvq4i5ieefq6"]
+
+[ext_resource type="Script" path="res://Scripts/RayCast2D.gd" id="1_3m77l"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_l2tur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0v1f"]
+radius = 20.0
+
+[sub_resource type="Gradient" id="Gradient_p77xc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mujxe"]
+gradient = SubResource("Gradient_p77xc")
+
+[sub_resource type="Gradient" id="Gradient_5hu25"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p6538"]
+gradient = SubResource("Gradient_5hu25")
+
+[sub_resource type="Gradient" id="Gradient_pqiq2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u5i14"]
+gradient = SubResource("Gradient_pqiq2")
+
+[sub_resource type="Gradient" id="Gradient_watn4"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4ids"]
+gradient = SubResource("Gradient_watn4")
+
+[sub_resource type="Gradient" id="Gradient_je7ox"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v18c4"]
+gradient = SubResource("Gradient_je7ox")
+
+[sub_resource type="Gradient" id="Gradient_k068e"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t5hcx"]
+gradient = SubResource("Gradient_k068e")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(57, 382)
+script = ExtResource("1_l2tur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_y0v1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+scale = Vector2(0.65, 0.65)
+texture = SubResource("GradientTexture2D_mujxe")
+
+[node name="Coyote" type="Timer" parent="CharacterBody2D"]
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(260, 0)
+script = ExtResource("1_3m77l")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/RayCast2D"]
+position = Vector2(128, 0)
+texture = SubResource("GradientTexture1D_p6538")
+
+[node name="LeftTerrain" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftTerrain"]
+position = Vector2(-4, 400)
+polygon = PackedVector2Array(4, 0, 4, 250, 300, 250, 300, 0, 32, 0, 32, -400, 4, -400)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftTerrain/CollisionPolygon2D"]
+position = Vector2(152, 125)
+scale = Vector2(4.625, 3.90625)
+texture = SubResource("GradientTexture2D_u5i14")
+
+[node name="RightTerrain" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightTerrain"]
+position = Vector2(1121, 400)
+polygon = PackedVector2Array(32, 150, 32, 250, -200, 250, -200, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="RightTerrain/CollisionPolygon2D"]
+position = Vector2(-84.5, 198.5)
+scale = Vector2(3.60938, 1.57813)
+texture = SubResource("GradientTexture2D_w4ids")
+
+[node name="TopTerrain" type="StaticBody2D" parent="."]
+position = Vector2(650, 24)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TopTerrain"]
+position = Vector2(75, -207)
+polygon = PackedVector2Array(100, 150, 100, 275, -250, 275, -250, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="TopTerrain/CollisionPolygon2D"]
+position = Vector2(-75.5, 196)
+scale = Vector2(5.48438, 2.53125)
+texture = SubResource("GradientTexture2D_v18c4")
+
+[node name="CentralPlatform" type="StaticBody2D" parent="."]
+position = Vector2(650, 320)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CentralPlatform"]
+position = Vector2(75, -175)
+polygon = PackedVector2Array(0, 150, 0, 200, -150, 200, -150, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="CentralPlatform/CollisionPolygon2D2"]
+position = Vector2(-75.5, 176.5)
+scale = Vector2(2.35938, 0.859375)
+texture = SubResource("GradientTexture2D_t5hcx")
+
+[connection signal="timeout" from="CharacterBody2D/Coyote" to="CharacterBody2D" method="_on_timer_timeout"]
