@@ -1,2 +1,2 @@
-# JUEGUICO
- jueguico literalmente
+# Desarrollo videojuego sencillo
+ 
