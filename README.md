@@ -1,2 +1,2 @@
-# Desarrollo videojuego sencillo
+# Desarrollo videojuego
  
